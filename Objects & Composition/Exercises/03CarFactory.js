@@ -18,13 +18,13 @@ function carFactory(carRequirements) {
         model: carRequirements.model,
         engine: selectedEngine,
         carriage: carriages[carRequirements.carriage],
-        wheels: [wheelSize, wheelSize, wheelSize, wheelSize]
+        wheels: new Array(4).fill(wheelSize)
     }
     return car;
 }
 
-carFactory({ model: 'VW Golf II',
+console.log(carFactory({ model: 'VW Golf II',
 power: 90,
 color: 'blue',
 carriage: 'hatchback',
-wheelsize: 14 });
+wheelsize: 14 }));

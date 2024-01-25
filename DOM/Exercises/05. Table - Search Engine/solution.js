@@ -4,7 +4,6 @@ function solve() {
   let tableRows = Array.from(document.querySelectorAll("tbody tr"));
 
   function onClick() {
-    debugger;
     let searchText = searchInput.value;
     if (searchText !== "") {
       for (let tableRow of tableRows) {

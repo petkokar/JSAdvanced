@@ -2,6 +2,7 @@ function attachEventsListeners() {
     const convertButtons = document.querySelectorAll('input[value="Convert"]');
     let arrayButtons = Array.from(convertButtons);
     
+    
     for (let button of arrayButtons) {
         button.addEventListener('click', (event) => {
             const inputValue = Number(event.currentTarget.previousElementSibling.value);
@@ -19,7 +20,6 @@ function attachEventsListeners() {
         })
 
     }
-
     function convertToDays(value, unit) {
         switch (unit) {
             case 'days':

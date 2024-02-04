@@ -1,53 +1,46 @@
 function validator(object) {
-    let isValid = true;
     const validMethods = ['GET', 'POST', 'DELETE', 'CONNECT'];
     const uriPattern = /^[\w.]+$/;
     const validVersions = ['HTTP/0.9', 'HTTP/1.0', 'HTTP/1.1', 'HTTP/2.0'];
-    const specialChars = ['<', '>', '&', '\'', '"', '\\'];
+    const specialChars = ['<', '>', '&', `'`, '\\', `"`];
     if (!validMethods.includes(object.method)) {
-        isValid = false;
-        console.log('Invalid request header: Invalid Method');
+        // console.log('Invalid request header: Invalid Method');
+        throw new Error('Invalid request header: Invalid Method');
     }
 
-    if (!uriPattern.test(object.uri)) {
-        isValid = false;
-        console.log('Invalid request header: Invalid Uri');
+    if (!object.uri || !object.uri == "*" || !object.uri.match(uriPattern)) {
+        // console.log('Invalid request header: Invalid Uri');
+        throw new Error('Invalid request header: Invalid URI');
     }
 
     if (!validVersions.includes(object.version)) {
-        isValid = false;
-        console.log('Invalid request header: Invalid Version');
+        // console.log('Invalid request header: Invalid Version');
+        throw new Error('Invalid request header: Invalid Version');
     }
 
-    if (!isValidMessage(object.message)) {
-        isValid = false;
-        console.log('Invalid request header: Invalid Message');
+    if (!object.hasOwnProperty("message")) {
+        // console.log('Invalid request header: Invalid Message');
+        throw new Error('Invalid request header: Invalid Message');
     }
 
-    function isValidMessage(message) {
-        if (message == '') {
-            return true;
-        }
-
-        if(specialChars.includes(message)) {
-            return false;
+    for(let char of object.message) {
+        if (specialChars.includes(char)) {
+            throw new Error('Invalid request header: Invalid Message');
         }
     }
 
-    if (isValid) {
-        console.log(object);
-    }
+    return object;
 }
 
 
 validator({
 
-    method: 'GET',
+    method: 'OPTIONS',
     
-    uri: 'svn.public.catalog',
+    uri: 'git.master',
     
     version: 'HTTP/1.1',
     
-    message: ''
+    message: '-recursive'
     
     })

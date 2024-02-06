@@ -13,7 +13,7 @@ function databaseManage(array, sortCriteria) {
     }
 
     for (let ticket of array) {
-        let [destination, price, status] = ticket.split("|");
+        let [destination, price, status] = ticket.split("|"); 
         price = Number(price);
         arr.push(new Ticket(destination, price, status));
     }

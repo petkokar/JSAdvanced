@@ -23,6 +23,7 @@ function createAssemblyLine(){
             }
         },
         hasParktronic (car) {
+            debugger
             car.checkDistance = (distance) => {
                 if (distance < 0.1) {
                     console.log("Beep! Beep! Beep!");
@@ -49,3 +50,8 @@ console.log(myCar.temp);
 myCar.tempSettings = 18;
 myCar.adjustTemp();
 console.log(myCar.temp);
+assemblyLine.hasParktronic(myCar);
+
+myCar.checkDistance(0.4);
+
+myCar.checkDistance(0.2);

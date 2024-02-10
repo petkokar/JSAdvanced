@@ -19,7 +19,10 @@ function lowestPrice(input) {
         // }
 
         if (!productLowestPrice[productName] || productPrice < productLowestPrice[productName].productPrice) {
-            productLowestPrice[productName] = { productPrice, townName}
+            productLowestPrice[productName] = {
+                productPrice,
+                townName
+            }
         }
     }
 

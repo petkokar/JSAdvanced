@@ -1,8 +1,8 @@
 class OnlineShop {
+  products = [];
+  sales = [];
   constructor(warehouseSpace) {
     this.warehouseSpace = warehouseSpace;
-    this.products = [];
-    this.sales = [];
   }
 
   loadingStore(product, quantity, spaceRequired) {
@@ -10,8 +10,8 @@ class OnlineShop {
       throw new Error("Not enough space in the warehouse.");
     }
 
-    this.warehouseSpace -= spaceRequired;
     this.products.push({ product, quantity });
+    this.warehouseSpace -= spaceRequired;
     return `The ${product} has been successfully delivered in the warehouse.`;
   }
 
@@ -40,11 +40,11 @@ class OnlineShop {
     if (!foundProduct) {
       throw new Error(`There is no ${product} in the warehouse.`);
     }
-    foundProduct.quantity-= 1;
-    let quantity = product.quantity;
-    this.sales.push({ product, quantity });
+    foundProduct.quantity--;
+    // let quantity = foundProduct.quantity;
+    this.sales.push({ product, quantity: 1 });
 
-    return `The ${foundProduct.product} has been successfully sold.`;
+    return `The ${product} has been successfully sold.`;
   }
 
   revision() {
@@ -52,12 +52,14 @@ class OnlineShop {
       throw new Error("There are no sales today!");
     }
     const salesCount = this.sales.length;
-    let warehouseInfo = "Products in the warehouse:\n";
+    let result = [
+      `You sold ${salesCount} products today!`,
+      "Products in the warehouse:"
+    ]
     this.products.forEach((item) => {
-      warehouseInfo += `${item.product}-${item.quantity} more left\n`;
+      result.push(`${item.product}-${item.quantity} more left`);
     });
-
-    return `You sold ${salesCount} products today!\n${warehouseInfo}`;
+    return result.join('\n')
   }
 }
 

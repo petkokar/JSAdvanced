@@ -65,9 +65,7 @@ class FashionRetailInventory {
         `${product.productName}/Size:${product.size}/Quantity:${product.quantity}/Price:${product.price}$`
     );
 
-    return `${this.storehouse} storehouse in ${
-      this.location
-    } available products:\n${productInfo.join("\n")}`;
+    return `${this.storehouse} storehouse in ${this.location} available products:\n${productInfo.join("\n")}`;
   }
 }
 

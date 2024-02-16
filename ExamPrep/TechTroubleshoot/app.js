@@ -73,6 +73,7 @@ function solution() {
         liItem.appendChild(resolveBtn);
         pendingContent.appendChild(liItem);
         resolveBtn.addEventListener('click', onResolve);
+        
         function onResolve() {
           // let resolveBtnRef = document.querySelector('.resolve-btn');
           resolveBtn.remove();

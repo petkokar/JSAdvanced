@@ -6,7 +6,7 @@ function start(){
 
     if(!userData) {
         window.location = '/login.html';
-        return
+        return;
     }
     document.querySelector('form').addEventListener('submit', onCreate);
 }

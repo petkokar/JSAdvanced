@@ -15,7 +15,7 @@ async function onRegister(event) {
 
     const url = 'http://localhost:3030/users/register'
     try {
-        if(!email.length || !password) {
+        if(!email || !password) {
             throw new Error('All fields are required!');
         }
         if(password != repass) {

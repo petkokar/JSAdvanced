@@ -29,7 +29,7 @@ async function onLogin(event) {
 
         localStorage.setItem("user", JSON.stringify(userData));
 
-        window.location.pathname = 'index.html';
+        window.location.href = "index.html";
     } catch(err) {
         alert(err.message)
     }

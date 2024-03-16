@@ -132,6 +132,16 @@ async function onCreate(e) {
     onLoadCatch();
 }
 
+function createOption(method, data) {
+    return {
+        method,
+        headers: {
+            "Content-Type": 'application/json',
+            "X-Authorization": userData.accessToken
+        },
+        body: JSON.stringify(data)
+    }
+}
 function onUpdate(e) {
 
 
@@ -148,14 +158,3 @@ async function onDelete(e) {
     onLoadCatch();
 };
 
-
-function createOption(method, data) {
-    return {
-        method,
-        Headers: {
-            "Content-Type": 'application/json',
-            "X-Authorization": userData.accessToken
-        },
-        body: JSON.stringify(data)
-    }
-}
